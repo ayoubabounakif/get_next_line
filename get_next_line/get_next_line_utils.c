@@ -6,7 +6,7 @@
 /*   By: aabounak <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 00:45:10 by aabounak          #+#    #+#             */
-/*   Updated: 2019/11/02 22:03:55 by aabounak         ###   ########.fr       */
+/*   Updated: 2019/11/04 00:24:41 by aabounak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[i] = '\0';
 	return (str);
 }
+
+/*
+ * This function is not the same as the one on libft.
+ * I changed the return from ft_strdup("") when start > ft_strlen(s)
+ * to return 0 as the previous one caused 1 byte leak in memory.
+*/
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
