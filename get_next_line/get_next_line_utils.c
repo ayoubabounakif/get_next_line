@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aabounak <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aabounak <aabounak@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 00:45:10 by aabounak          #+#    #+#             */
-/*   Updated: 2019/11/04 00:24:41 by aabounak         ###   ########.fr       */
+/*   Updated: 2020/12/16 10:51:39 by aabounak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 size_t	ft_strlen(const char *str)
 {
@@ -53,7 +54,8 @@ char	*ft_strdup(const char *s1)
 
 	len = ft_strlen(s1);
 	i = 0;
-	if (!(ptr = (char*)malloc(sizeof(char) * len + 1)))
+	ptr = (char *)malloc(sizeof(char) * len + 1);
+	if (!(ptr))
 		return (0);
 	while (i < len)
 	{
@@ -64,7 +66,7 @@ char	*ft_strdup(const char *s1)
 	return (ptr);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoinn(char const *s1, char const *s2)
 {
 	char	*str;
 	int		i;
@@ -74,7 +76,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	if ((s1 == 0 && s2 == 0) || !s1)
 		return (0);
-	if (!(str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!(str))
 		return (0);
 	while (s1[i] != '\0')
 	{
@@ -90,12 +93,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-/*
- * This function is not the same as the one on libft.
- * I changed the return from ft_strdup("") when start > ft_strlen(s)
- * to return 0 as the previous one caused 1 byte leak in memory.
-*/
-
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ptr;
@@ -106,7 +103,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	if (start > ft_strlen(s))
 		return (0);
-	if (!(ptr = (char *)malloc(sizeof(char) * (len + 1))))
+	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	if (!(ptr))
 		return (0);
 	while (i < len && s[start + i])
 	{
